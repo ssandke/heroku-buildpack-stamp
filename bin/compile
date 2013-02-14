@@ -7,7 +7,7 @@ indent() {
 RELEASE=v$((`grep -wo "^current_seq: .*" /app/tmp/push_metadata.yml | cut -d ' ' -f 2`+1))
 echo "-----> Creating profile.d/stamp.sh with $RELEASE"
 
-cat /app/slug-complier/bin/slug_c
+cat /app/slug-compiler/bin/slug_c
 if [ ! -d $1/.profile.d ]; then
   mkdir $1/.profile.d/
 fi
