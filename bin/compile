@@ -11,10 +11,10 @@ if [ ! -s $1/hello.txt ]; then
 
   pwd
   ls -al /
-  ls -al /app/hooks/
-  ls -al /app/slug-compiler/
-  ls -al /home/group_home/
-  env
+  ls -al /tmp
+  cat /app/hooks/pre-receive
+  ls -al /app/slug-compiler/bin/
+  cat /home/group_home/.gitconfig
   echo "git commit: $COMMIT_HASH" | indent
   if [ ! -d $1/.profile.d ]; then
     mkdir $1/.profile.d/
