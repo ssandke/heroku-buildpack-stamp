@@ -4,13 +4,15 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Found a hello.txt"
+echo "-----> Creating profile.d/stamp.sh"
 
-# if hello.txt is empty, abort the build
 if [ ! -s $1/hello.txt ]; then
-  echo "hello.txt was empty" | indent
-  exit 1
-fi
+  COMMIT_HASH=`git log -1 --format="%H"`
 
-# replace hello with goodbye in a new file
-cat $1/hello.txt | sed -e "s/[Hh]ello/Goodbye/g" > $1/goodbye.txt
+  echo "git commit: $COMMIT_HASH" | indent
+  if [ ! -d $1/.profile.d ]; then
+    mkdir $1/.profile.d/
+  fi
+  echo "!/bin/sh" > $1/.profile.d/stamp.sh
+  echo "export COMMIT_HASH=$COMMIT_HASH" >> $1/.profile.d/stamp.sh
+fi
