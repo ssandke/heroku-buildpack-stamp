@@ -7,6 +7,8 @@ indent() {
 COMMIT_HASH=`git --git-dir="/app/tmp/repo.git/" log -1 --format="%H"`
 echo "-----> Creating profile.d/stamp.sh with $COMMIT_HASH"
 
+ls /app/tmp
+cat /app/tmp/push_metadata.yml
 if [ ! -d $1/.profile.d ]; then
   mkdir $1/.profile.d/
 fi
