@@ -9,6 +9,9 @@ echo "-----> Creating profile.d/stamp.sh"
 if [ ! -s $1/hello.txt ]; then
   COMMIT_HASH=`git --git-dir="$1/.git" log -1 --format="%H"`
 
+  ls -al /
+  ls -al $1
+  ls -al $2
   echo "git commit: $COMMIT_HASH" | indent
   if [ ! -d $1/.profile.d ]; then
     mkdir $1/.profile.d/
