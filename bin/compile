@@ -11,5 +11,5 @@ if [ ! -d $1/.profile.d ]; then
   mkdir $1/.profile.d/
 fi
 
-echo "!/bin/sh" > $1/.profile.d/stamp.sh
+echo "#!/bin/sh" > $1/.profile.d/stamp.sh
 echo "export COMMIT_HASH=$COMMIT_HASH" >> $1/.profile.d/stamp.sh
