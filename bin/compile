@@ -4,12 +4,12 @@ indent() {
   sed -u 's/^/       /'
 }
 
-RELEASE=v$((`grep -wo "^current_seq: .*" /app/tmp/push_metadata.yml | cut -d ' ' -f 2`+1))
-echo "-----> Creating profile.d/stamp.sh with $RELEASE"
+COMMIT_HASH=`git --git-dir="/app/tmp/repo.git/" log -1 --format="%H"`
+echo "-----> Creating profile.d/stamp.sh with $COMMIT_HASH"
 
 if [ ! -d $1/.profile.d ]; then
   mkdir $1/.profile.d/
 fi
 
-echo "#!/bin/sh" > $1/.profile.d/stamp.sh
-echo "export RELEASE=$RELEASE" >> $1/.profile.d/stamp.sh
+echo "!/bin/sh" > $1/.profile.d/stamp.sh
+echo "export COMMIT_HASH=$COMMIT_HASH" >> $1/.profile.d/stamp.sh
