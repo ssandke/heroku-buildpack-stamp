@@ -14,4 +14,4 @@ fi
 
 echo "#!/bin/sh" > $1/.profile.d/stamp.sh
 echo "export COMMIT_HASH=$COMMIT_HASH" >> $1/.profile.d/stamp.sh
-echo "export COMMIT_DATE=$COMMIT_DATE" >> $1/.profile.d/stamp.sh
+echo "export COMMIT_DATE=\"$COMMIT_DATE\"" >> $1/.profile.d/stamp.sh
