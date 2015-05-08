@@ -4,8 +4,9 @@ indent() {
   sed -u 's/^/       /'
 }
 
-COMMIT_HASH=`git --git-dir="/app/tmp/repo.git/" log -1 --format="%H"`
-COMMIT_DATE=`git --git-dir="/app/tmp/repo.git/" log -1 --format="%ci"`
+# get the source version and the current timestamp
+COMMIT_HASH=$SOURCE_VERSION
+COMMIT_DATE=`date +"%Y-%m-%d %T %z"`
 echo "-----> Creating profile.d/stamp.sh with $COMMIT_HASH and date $COMMIT_DATE"
 
 if [ ! -d $1/.profile.d ]; then
