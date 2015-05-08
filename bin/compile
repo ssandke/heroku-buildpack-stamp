@@ -4,15 +4,17 @@ indent() {
   sed -u 's/^/       /'
 }
 
-# get the source version and the current timestamp
-COMMIT_HASH=$SOURCE_VERSION
-COMMIT_DATE=`date +"%Y-%m-%d %T %z"`
-echo "-----> Creating profile.d/stamp.sh with $COMMIT_HASH and date $COMMIT_DATE"
+# use SOURCE_VERSION
+BUILD_TIMESTAMP=`date +"%Y-%m-%d %T %z"`
+
+# debug
+echo "SOURCE_VERSION=$SOURCE_VERSION"
+echo "BUILD_TIMESTAMP=$BUILD_TIMESTAMP"
 
 if [ ! -d $1/.profile.d ]; then
   mkdir $1/.profile.d/
 fi
 
 echo "#!/bin/sh" > $1/.profile.d/stamp.sh
-echo "export COMMIT_HASH=$COMMIT_HASH" >> $1/.profile.d/stamp.sh
-echo "export COMMIT_DATE=\"$COMMIT_DATE\"" >> $1/.profile.d/stamp.sh
+echo "export SOURCE_VERSION=$SOURCE_VERSION" >> $1/.profile.d/stamp.sh
+echo "export BUILD_TIMESTAMP=\"$BUILD_TIMESTAMP\"" >> $1/.profile.d/stamp.sh

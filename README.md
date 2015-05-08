@@ -1,8 +1,10 @@
 Heroku buildpack: Stamp
 =======================
 
-Sets ENV['COMMIT_HASH'] to the released git commit id. Useful for
-knowing exactly which version of your app is being served.
+Sets two ENV variables
+
+* ENV['SOURCE_VERSION'] - a git SHA for the deployed version
+* ENV['BUILD_TIMESTAMP'] - a formatted timestamp of the build time
 
 Getting started
 -----
