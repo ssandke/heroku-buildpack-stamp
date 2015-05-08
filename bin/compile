@@ -4,17 +4,19 @@ indent() {
   sed -u 's/^/       /'
 }
 
-# use SOURCE_VERSION
-BUILD_TIMESTAMP=`date +"%Y-%m-%d %T %z"`
+# set up the variable
+DEPLOYED_VERSION=$SOURCE_VERSION
+DEPLOYED_TIMESTAMP=`date +"%Y-%m-%d %T %z"`
 
 # debug
-echo "SOURCE_VERSION=$SOURCE_VERSION"
-echo "BUILD_TIMESTAMP=$BUILD_TIMESTAMP"
+echo "DEPLOYED_VERSION=$DEPLOYED_VERSION"
+echo "DEPLOYED_TIMESTAMP=$DEPLOYED_TIMESTAMP"
 
+# ensure the directory exists
 if [ ! -d $1/.profile.d ]; then
   mkdir $1/.profile.d/
 fi
 
 echo "#!/bin/sh" > $1/.profile.d/stamp.sh
-echo "export SOURCE_VERSION=$SOURCE_VERSION" >> $1/.profile.d/stamp.sh
-echo "export BUILD_TIMESTAMP=\"$BUILD_TIMESTAMP\"" >> $1/.profile.d/stamp.sh
+echo "export DEPLOYED_VERSION=$DEPLOYED_VERSION" >> $1/.profile.d/stamp.sh
+echo "export DEPLOYED_TIMESTAMP=\"$DEPLOYED_TIMESTAMP\"" >> $1/.profile.d/stamp.sh
