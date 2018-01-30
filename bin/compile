@@ -6,7 +6,7 @@ indent() {
 
 # set up the variable
 DEPLOYED_VERSION=$SOURCE_VERSION
-DEPLOYED_TIMESTAMP=`date +"%Y-%m-%d %T %z"`
+DEPLOYED_TIMESTAMP=`TZ=America/Los_Angeles date +"%Y%m%d %T %Z"`
 
 # debug
 echo "DEPLOYED_VERSION=$DEPLOYED_VERSION"
